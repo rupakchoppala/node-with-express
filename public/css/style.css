@@ -1,0 +1,18 @@
+h2{
+    color: aqua;
+    font-size: 24px;
+
+}
+p{
+    color: #000000;
+
+}
+.card{
+    /* flex-direction: column-reverse; */
+    text-align: center;
+    box-shadow: 0px 4px 8px 0 rgba(222, 61, 61, 0.2),0 6px 20 px 0 rgba(81, 7, 7, 0.2);
+    margin: 50px 200px;
+    padding: 20px 30px;
+    border-radius: 5px;
+
+}

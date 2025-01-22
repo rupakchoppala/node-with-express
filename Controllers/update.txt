@@ -1,0 +1,126 @@
+import fs from 'fs';
+import Movie from '../Models/movieModel';
+let movies=JSON.parse(fs.readFileSync('./data/movies.json'));
+export const checkId=(req,res,next,value)=>{
+    //const id=Number(req.params.id);
+    const id=Number(value);
+
+    const movie=movies.find(ele => ele.id===id);
+    if(!movie){
+      return  res.status(404).json({
+        status:"Fail",
+        message:"Movie not found"
+        });
+}
+next();
+}
+//validate movie
+export const validateMovie=(req,res,next)=>{
+    const {movie,release}=req.body;
+    if(!movie || !release){
+        return res.status(400).json({
+            status:"Fail",
+            message:"Movie and release date are required"
+            });
+            }
+            next();
+            }
+
+//Route=http+url
+export  const getMovies=(req,res)=>{
+    // res.status(200).send(<h1>'Hello World from express'/</h1>);//to send text response use text or html
+    //  res.status(200).json({
+    //      status:"success",
+    //      requestedAt:req.requestedAt,
+    //      count:movies.length,
+    //      data:{
+    //          movies:movies
+    //      }
+    //  });
+    }
+export  const  getMoviesByid=(req,res)=>{
+    // res.status(200).send(<h1>'Hello World from express'/</h1>);//to send text response use text or html
+   // const id=Number(req.params.id);
+   // const movie=movies.find(ele => ele.id===id);
+    // if(!movie){
+    //    res.status(404).json({
+    //     status:"Fail",
+    //     message:"Movie not found"
+    //     }
+    //    )
+    // }
+    //  res.status(200).json({
+    //      status:"success",
+    //      data:{
+    //          movie:movie
+    //      }
+    //  });}
+}
+
+//get movie by id
+//app.get('/api/v1/movies/:id',
+ //});
+ //HAndling patch method
+ export  const patchMovie=(req,res)=>{
+    // res.status(200).send(<h1>'Hello World from express'/</h1>);//to send text response use text or html
+    // const id=Number(req.params.id);
+    // const movie=movies.find(ele => ele.id===id);
+    // if(!movie){
+    //    res.status(404).json({
+    //     status:"Fail",
+    //     message:"Movie not found"
+    //     }
+    //    )
+    // }
+    // let index=movies.indexOf(movie);
+    // Object.assign(movie,req.body);
+    // movies[index]=movie;
+    // fs.writeFile('./data/movies.json',JSON.stringify(movies),(err)=>{
+    //     res.status(200).json({
+    //         status:"success",
+    //         data:{
+    //             movie:movie
+    //         }
+    //     });
+    // })
+}  
+ ;
+//Handling post method
+export  const postMopvies=(req,res)=>{
+    //console.log(req.body);
+    // const newId = Number(movies[movies.length -1].id + 1);
+    // const newMovie=Object.assign({id:newId},req.body);
+    // movies.push(newMovie);
+    // fs.writeFile('./data/movies.json',JSON.stringify(movies),err=>{
+    //     res.status(200).json(
+    //         {
+    //             status:"success",
+    //             data:{
+    //                 movie:newMovie
+
+    //             }
+    //         }
+    //     )
+    // })
+   // res.send("created");
+};
+//Handling delete method
+export  const deleteMovie=(req,res)=>{
+    // const id=Number(req.params.id);
+    // const index=movies.findIndex(ele=>ele.id===id);
+    // if(index===-1){
+    //     res.status(404).json({
+    //         status:"Fail",
+    //         message:"Movie not found"
+    //         })
+    //         }
+            // movies.splice(index,1);
+            // fs.writeFile('./data/movies.json',JSON.stringify(movies),(err)=>{
+            //     res.status(200).json({
+            //         status:"success",
+            //         data:{
+            //             message:"Movie deleted"
+            //             }
+            //             })
+            //             })
+                        };
