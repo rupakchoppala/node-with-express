@@ -28,6 +28,13 @@ const ValidationErrorHandler=(err)=>{
    return  new CustomError(msg,400);
 
 }
+const handleExpiredJwt=(err)=>{
+    return  new CustomError('jwt has expired .please login again',400);
+
+}
+const handleJwtError=(err)=>{
+    return  new CustomError('invalid token .please login again',400);
+}
 const prodErrors=(res,error)=>{
     if(error.isOperatonal){
     res.status(error.statusCode).json({
@@ -65,7 +72,12 @@ const GlobalErrorHandle=(error,req,res,next)=>{
                 error=ValidationErrorHandler(error);
              //   console.log("hjbfhqhag");
                 }
-
+        if(error.name==='TokenExpiredError'){
+            error=handleExpiredJwt(error);
+        }
+        if(error.name==='JsonWebTokenError'){
+            error=handleJwtError(error);
+        }
         prodErrors(res,error)
     }
  //  next();
