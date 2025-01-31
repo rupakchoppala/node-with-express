@@ -26,6 +26,7 @@ export class ApiFeatures {
   
     sort() {
       if (this.queryStr.sort) {
+        console.log(this.queryStr.sort)
         const sortFields = this.queryStr.sort.split(',').join(' ');
         this.query = this.query.sort(sortFields);
       } else {
